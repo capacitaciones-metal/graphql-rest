@@ -1,6 +1,6 @@
 const express = require('express');
 const {ApolloServer, gql} = require('apollo-server-express');
-const {fetchBooks,findBook,createBook} = require('./book-service')
+const {fetchBooks, findBook, createBook, updateBook} = require('./book-service')
 
 const typeDefs = gql`
 
@@ -17,16 +17,17 @@ const typeDefs = gql`
         books: [Book]
         book(id:ID!): Book
     }
-   
+
     input BookInput{
         title: String!
         author: String!
         price: Float!
         summary: String
     }
-    
+
     type Mutation{
         createBook(input:BookInput):Book
+        updateBook(id:ID, input: BookInput): Book
     }
 
 `;
@@ -40,8 +41,11 @@ const resolvers = {
         }
     },
     Mutation: {
-        createBook:(_,{input}) => {
+        createBook: (_, {input}) => {
             return createBook(input)
+        },
+        updateBook: (_, {id,input}) => {
+            return updateBook(id, input)
         }
     }
 };

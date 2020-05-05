@@ -14,3 +14,9 @@ module.exports.createBook = ({title,author,price,summary}) => {
     books.push(book)
     return book
 }
+
+module.exports.updateBook = (id, {title,author,price,summary}) => {
+    let index = books.findIndex(book => book.id == id)
+    books[index] = {id,title,author,price,summary}
+    return books[index]
+}
