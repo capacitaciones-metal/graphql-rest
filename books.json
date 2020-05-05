@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "title": "The Code of the Extraordinary Mind",
+    "author": "Vishen Lakhiani",
+    "price": 100,
+    "summary": "Doblar la realidad"
+  },
+  {
+    "id": 2,
+    "title": "Outliers",
+    "author": "Malcolm Gladwell",
+    "price": 80.50,
+    "summary": "Fuera de serie."
+  },
+  {
+    "id": 3,
+    "title": "Blink",
+    "author": "Malcolm Gladwell",
+    "price": 130.80,
+    "summary": null
+  },
+  {
+    "id": 4,
+    "title": "Limitless",
+    "author": "Jim Kwik",
+    "price": 150.99,
+    "summary": "Upgradear cerebro y memoria"
+  },
+  {
+    "id": 5,
+    "title": "Flow",
+    "author": "Mihály Csikszentmihályi",
+    "price": 60.00
+  }
+]
