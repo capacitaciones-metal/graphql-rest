@@ -1,6 +1,6 @@
 const express = require('express');
 const {ApolloServer, gql} = require('apollo-server-express');
-let books = require('./books.json')
+const {fetchBooks,findBook,createBook} = require('./book-service')
 
 const typeDefs = gql`
 
@@ -34,17 +34,14 @@ const typeDefs = gql`
 const resolvers = {
     Query: {
         hello: () => 'Hello world!',
-        books: () => books,
+        books: () => fetchBooks(),
         book: (_, {id}) => {
-            return books.find(book => book.id == id)
+            return findBook(id)
         }
     },
     Mutation: {
         createBook:(_,{input}) => {
-            let book = input
-            book.id = books.length + 1
-            books.push(book)
-            return book
+            return createBook(input)
         }
     }
 };

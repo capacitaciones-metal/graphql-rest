@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
 app.use(express.json())
-
-let books = require('./books.json')
+const {fetchBooks,findBook,createBook} = require('./book-service')
 
 app.get("/hello", (req, res) => {
         res.send('Hello world!')
@@ -10,19 +9,15 @@ app.get("/hello", (req, res) => {
 )
 
 app.get("/book", (req, res) => {
-    res.json(books)
+    res.json(fetchBooks())
 })
 
 app.get("/book/:id", (req, res) => {
-    let book = books.find(book => book.id == req.params.id)
-    res.json(book)
+    res.json(findBook(req.params.id))
 })
 
 app.post("/book", (req, res) => {
-    let book = req.body
-    book.id = books.length + 1
-    books.push(book)
-    res.json(book)
+    res.json(createBook(req.body))
 })
 
 app.listen({port: 5000}, () =>

@@ -1,14 +1,14 @@
 let books = require('./books.json')
 
-export const fetchBooks = () => {
+module.exports.fetchBooks = () => {
     return books
 }
 
-export const findBook = (id) => {
-    return books.find(book => book.id == req.params.id)
+module.exports.findBook = (id) => {
+    return books.find(book => book.id == id)
 }
 
-export const createBook = ({title,author,price,summary}) => {
+module.exports.createBook = ({title,author,price,summary}) => {
     let book = {title,author,price,summary}
     book.id = books.length + 1
     books.push(book)
